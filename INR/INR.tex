@@ -146,7 +146,7 @@ Xavier Torrent Gorj\'{o}n \\
 \subsection{2-adic vs Binary}
 
 \begin{center}
-  \begin{tabular}{ c | c | c | c }
+  \begin{tabular}{ | c | c | c | c | }
     2-adic & Binary & 2-adic to base-10 & Binary to base-10 \\ \hline
     1 & 0 & 1 & 0 \\ \hline
     2 & 1 & 2 & 1 \\ \hline
@@ -207,6 +207,74 @@ Xavier Torrent Gorj\'{o}n \\
 	\item No broadcasts, no subnet masks.
 	\item \url{http://www.iana.nl/assignments/ipv6-address-space/ipv6-address-space.xhtml}
 \end{itemize}
+
+
+\begin{description}
+	\item[Reserved addresses]
+\end{description}
+	\begin{center}
+	\begin{tabular}{ | c | c | }
+		\hline
+		::/8 & Special-purpose \\ \hline
+		100::/8 & Special-purpose \\ \hline
+		2000::/3 & Global unicast \\ \hline
+		fc00::/7 & Unique local unicast \\ \hline
+		fe80::/10 & Link-local (Link-scoped) unicast \\ \hline
+		ff00::/8 & Multicast \\
+		\hline
+	\end{tabular}
+	\end{center}
+
+\begin{description}
+	\item[Special-purpose addresses]
+\end{description}
+	\begin{center}
+  	\begin{tabular}{ | c | c | }
+    	\hline
+		::/128 & Unspecified address \\ \hline
+		::1/128 & Localhost address \\ \hline
+		::a.b.c.d/128(from ::/96) & IPv4-compatible addresses \\ \hline
+		::ffff:a.b.c.d/128 (from ::ffff:0:0/96) & IPv4-mapped addresses \\ \hline
+		64:ff9b::/96 & Well-known prefix \\ \hline
+		100::/64 & Discard-only address block \\
+		\hline
+	\end{tabular}
+	\end{center}
+	
+	
+\subsection{Neighbour Discovery Protocol (NDP)}
+	
+\begin{itemize}
+	\item IPv6 does not use ARP. Uses ICMPv6 instead.
+	\item ICMPv6 types for NDP:
+\end{itemize}	
+
+\begin{center}
+  	\begin{tabular}{ | c | c | }
+    	\hline
+		133 & Router Solicitation \\ \hline
+		134 & Router Advertisement \\ \hline
+		135 & Neighbor Solicitation \\ \hline
+		136 & Neighbor Advertisement \\ \hline
+		137 & Redirect Message \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\subsection{IPv6 Header}
+
+\centerline{\includegraphics[scale=0.45]{images/IPv6-Header.png}\\[1cm]}
+
+
+
+
+
+	
+	
+	
+	
+\newpage
 
 
 \printbibliography
