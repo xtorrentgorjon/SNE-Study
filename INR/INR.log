@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.1.6)  12 MAR 2015 19:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.1.6)  17 MAR 2015 12:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,8 +435,40 @@ File: images/IPv6-Header.png Graphic file (type png)
 Package pdftex.def Info: images/IPv6-Header.png used on input line 267.
 (pdftex.def)             Requested size: 474.2675pt x 361.34666pt.
  [7 <./images/IPv6-Header.png>]
+<images/Ethernet.png, id=48, 477.785pt x 117.43875pt>
+File: images/Ethernet.png Graphic file (type png)
 
-LaTeX Warning: Empty bibliography on input line 280.
+<use images/Ethernet.png>
+Package pdftex.def Info: images/Ethernet.png used on input line 300.
+(pdftex.def)             Requested size: 334.44722pt x 82.20654pt.
+ [8 <./images/Ethernet.png>]
+Overfull \hbox (2.17412pt too wide) in paragraph at lines 315--316
+[]\OT1/cmr/m/n/10 Same as be-fore but chang-
+ []
+
+<images/VLAN.png, id=53, 824.07875pt x 394.47375pt>
+File: images/VLAN.png Graphic file (type png)
+ <use images/VLAN.png>
+Package pdftex.def Info: images/VLAN.png used on input line 354.
+(pdftex.def)             Requested size: 412.03836pt x 197.23639pt.
+
+[9] [10 <./images/VLAN.png>]
+<images/STP-convergence.png, id=61, 389.455pt x 496.85625pt>
+File: images/STP-convergence.png Graphic file (type png)
+
+<use images/STP-convergence.png>
+Package pdftex.def Info: images/STP-convergence.png used on input line 403.
+(pdftex.def)             Requested size: 194.72702pt x 248.4275pt.
+ [11 <./images/STP-convergence.png (PNG copy)>] <images/BPDU.png, id=65, 705.63
+625pt x 378.41376pt>
+File: images/BPDU.png Graphic file (type png)
+ <use images/BPDU.png>
+Package pdftex.def Info: images/BPDU.png used on input line 433.
+(pdftex.def)             Requested size: 493.942pt x 264.88782pt.
+
+[12] [13 <./images/BPDU.png>]
+
+LaTeX Warning: Empty bibliography on input line 459.
 
 (./INR.aux)
 Package logreq Info: Writing requests to 'INR.run.xml'.
@@ -444,10 +476,10 @@ Package logreq Info: Writing requests to 'INR.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 6388 strings out of 494978
- 104638 string characters out of 6180204
- 263142 words of memory out of 5000000
- 9548 multiletter control sequences out of 15000+600000
+ 6408 strings out of 494978
+ 105061 string characters out of 6180204
+ 264142 words of memory out of 5000000
+ 9564 multiletter control sequences out of 15000+600000
  8566 words of font info for 31 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,8n,33p,793b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -463,10 +495,10 @@ msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.p
 fb>
-Output written on INR.pdf (8 pages, 487528 bytes).
+Output written on INR.pdf (14 pages, 1130366 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

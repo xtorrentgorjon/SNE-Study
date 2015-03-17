@@ -267,14 +267,204 @@ Xavier Torrent Gorj\'{o}n \\
 \centerline{\includegraphics[scale=0.45]{images/IPv6-Header.png}\\[1cm]}
 
 
-
-
-
-	
-	
-	
-	
 \newpage
+
+
+\section{Layer 2: Bridging and Switching}
+
+\subsection{Layers 1 and 2}
+
+\begin{description}
+	\item[Layer 1] Repeaters, hubs. Same collision domain. Same link segment.
+	\item[Layer 2] Bridges, switches. Same collision domain. Same link segment.
+\end{description}
+	
+	
+\subsection{Layer 2: MAC and LLC}
+
+\begin{description}
+	\item[MAC] Media Access Control. Work from IEEE 802.3\footnote{\url{http://en.wikipedia.org/wiki/IEEE_802.3}}.
+	\item[CSMA/CD] Carrier Sense Multiple Access With Collision Detection. Ethernet is the most common.
+	\begin{enumerate}
+    	\item Is my frame ready for transmission? If yes, move to 2.
+    	\item Is medium idle? If not, wait until it becomes ready.
+    	\item Start transmitting.
+    	\item Did a collision occur? If so, go to collision detected procedure.
+    	\item Reset retransmission counters and end frame transmission.
+	\end{enumerate}
+	\item[LLC] Logical Link Control. Multiplexing mechanisms, flow control and error management. Interface between MAC and Network Layer.
+\end{description}
+	
+\subsection{Frame Formats}
+
+\centerline{\includegraphics[scale=0.7]{images/Ethernet.png}\\[1cm]}
+
+\begin{description}
+	\item[DIX Ethernet] DEC-Intel-Xerox initial frame structure\footnote{\url{http://www.epubbud.com/read.php?g=5HEKFDZU&two=1&tocp=38}}.
+	\begin{description}
+    	\item[8bytes Preamble] Each one containing $10101010$. Used for synchronization.
+    	\item[6bytes Destination Address]
+    	\item[6bytes Source Address]
+    	\item[2bytes Type] Indicator of the used transport protocol.
+    	\item[0-1500bytes Payload]
+    	\item[0-46bytes Pad] Valid Ethernet frames have, at least, 64 bytes (not counting Preamble!). If a frame is less than that (Payload < 46bytes), a pad is added to it. This is done to ease collision detection.
+    	\item[4bytes Checksum] CRC of all the frame fields.
+	\end{description}
+	\item[802.3 Ethernet] Changes from DIX:
+	\begin{description}
+    	\item[7bytes Preamble + 1byte Start of Frame] Same as before but changing last byte to have compatibility with 802.4 and 802.5 (Token Bus and Token Ring).
+    	\item[2bytes type -> 2bytes length] IEEE tried to change the purpose of the field (and move "type" information to *inside* the Payload), but some people did not change. Rule of thumb: if its value is over 1500, it is a Length field, otherwise it is a Type field.
+    	\item[Changes on the Payload] There are 8 additional bytes of 'metadata' on the payload that are used mostly for nothing, effectively reducing the MTU from 1500 to 1492.
+	\end{description}
+	
+\end{description}
+
+
+\subsection{MAC Addresses}
+
+\begin{description}
+	\item[MAC48] Physical, obsolete.
+	\item[EUI48] Virtual, including physical.
+	\item[EUI64] Extended.
+	\item[OUI] First 24bits of the MAC address. Identify who issued the device.
+\end{description}
+
+
+\subsection{EUI48 to EUI64}
+
+[0:23bits]:FF:FE:[24:--bits]. When used to generate IPv6 address, the 7th most significative bit is swapped.
+
+\subsection{Ethernet Types}
+
+\begin{description}
+	\item[0x0800] IP
+	\item[0x0806] ARP
+	\item[0x86DD] IPv6
+\end{description}
+
+\subsection{Bridges and Switches}
+
+\begin{description}
+	\item[Transparent Bridges] Use Store-and-Forward. Copy data from one port to another (or multiple ports). They can learn (and remember) where other devices are when they receive messages.
+	\item[Switches are synonyms of Bridges] Usually refer to bridges with multiple interfaces.
+\end{description}
+
+\subsection{VLANs (802.1Q-2011)}
+
+\centerline{\includegraphics[scale=0.5]{images/VLAN.png}\\[1cm]}
+
+
+\subsection{Layered Extensions}
+
+TO-DO
+
+\subsection{PBB-TE, TRILL, SPB}
+
+TO-DO
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+\section{STP Protocol}
+
+\subsection{Goals and properties}
+
+\begin{enumerate}
+    \item Eliminate edges (connections) until there are no possible loops.
+    \item After performing the algorithm, graph turns into a tree.
+    \item Topology changes cause changes on the tree.
+    \item Protocol works by electing a Root Node.
+\end{enumerate}
+
+
+
+\subsection{Configuration Messages}
+
+\begin{description}
+    \item[ID] based on a variable priority and its MAC address.
+    \item[Root Node] Elected as the node with the lowest ID on the system.
+    \item[Root ports on each Node] Chosen by\footnote{\url{https://www.youtube.com/watch?v=iB7BxtZVy3c}}:
+    \begin{enumerate}
+   		\item Lower advertised Root ID.
+   		\item Lower advertised cost to Root.
+   		\item Lower transmitting bridge ID.
+   		\item Lower  port ID.
+	\end{enumerate}
+\end{description}
+
+\centerline{\includegraphics[scale=0.5]{images/STP-convergence.png}\\[1cm]}
+
+
+
+\subsection{Timing Parameters}
+
+\begin{description}
+    \item[Hello Time] Time between two configuration messages.
+    \item[Max Age] Parameter to discard messages that are too old.
+    \item[Forward Delay] Half of the delay before transitioning from blocking to forwarding.
+    \begin{enumerate}
+   		\item Can be understood as two different waiting times. During that waiting, it does not forward packets.
+   		\item First waiting: Listen for neighbours (other bridges).
+   		\item Second waiting: Learn the location of MAC addresses.
+	\end{enumerate}
+\end{description}
+
+\subsection{Topology Change Mechanism}
+
+
+\begin{description}
+   	\item[Memory] Bridges remember where other bridges are located.
+   	\item[Stable Topology] When the topology is stable, bridges have a long caching time.
+   	\item[Topology Changes] When a topology change is detected, the bridge detecting the change (and subsequent ones) sends a Topology Change Notification on his Root Port. When the message reaches the Root Bridge, it sets up its Topology Change flag. This causes other bridges to switch to the short caching delay.
+\end{description}
+
+
+
+\subsection{Bridge Protocol Data Unit (BPDU)}
+
+\centerline{\includegraphics[scale=0.5]{images/BPDU.png}\\[1cm]}
+
+\begin{description}
+   	\item[Protocol Identifier] All zeroes.
+   	\item[Version] 0 for STP, 2 for RST
+   	\item[Message Type] 0 for Hello, 2 for RST, 128 for TCN
+   	\item[Flags] TCA (Topology Change Ack), [Proposal, Agreement, ...], TC (Topology Change)
+   	\item[Root ID]  Root Bridge.
+   	\item[Cost to Root] Cost to the Root Bridge.
+   	\item[Bridge ID] Bridge transmitting.
+   	\item[Port ID] Port used on the transmitting bridge.
+   	\item[Message Age] Age of the BPDU information.
+   	\item[Max Age] Tipically 20 seconds (min 6).
+   	\item[Hello Time] Tipically 2 seconds.
+   	\item[Forward Delay] Tipically 15 seconds (min 4).
+\end{description}
+
+\subsection{STP Enhancements}
+
+\begin{description}
+   	\item[RST] 
+   	\item[STP on VLANs]
+   	\item[MSTP]
+\end{description}
+
+
+
+
+\newpage
+
+
+
+
+
+
 
 
 \printbibliography
