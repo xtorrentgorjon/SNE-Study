@@ -770,19 +770,124 @@ which might be present in a network that didn’t converge yet (180 seconds).
 \subsection{OSPF Packet Format}
 	
 
+\centerline{\includegraphics[scale=0.5]{images/OSPFformat.png}\\[1cm]}
 
+\begin{description}
+	\item[Type 1: Hello Packet] Sent periodically to 224.0.0.5 multicast address on all interfaces (unicast on virtual-links), enabling dynamic discovery and refresh of neighbors. On broadcast and NBMA networks, Hello packets are used to elect DR and BDR\footnote{\url{https://sites.google.com/site/amitsciscozone/home/important-tips/ospf/ospf-packet-types}}.
+	\item[Type 2: Database Description] The OSPF router summarizes the local database and the DBD packets carry a set of LSAs belonging to the database. When a neighbor sees an LSA that is more recent than its own database copy, it requests this newer LSA from the neighbor.
+	\item[Type 3: Link State Request] After DBD packets exchange process, the router may find it does not have an up-to-date database. The LSR packet is used to request pieces of neighbor database that is more up-to-date. 
+	\item[Type 4: Link State Update] These packets implement the flooding of LSAs. Each LSA contains routing, metric and topology information to describe a portion of OSPF network.
+	\item[Type 5: Link State Acknowledgement] OSPF requires acknowledgment for the receipt of each LSA. Multiple LSAs can be acknowledged in a single LSAck packet.
+\end{description}
 
+\subsection{OSPFv3}
 
+TO-DO
 
 
 \newpage
 
 \section{Path Vector Routing - BGP}
 
+\subsection{Basics of BGP(4)}
+
+
+\begin{enumerate}
+	\item Inter-AS protocol monopoly.
+	\item Based on Path-Vector Routing.
+	\item ASs have a custom defined set of policies for routing.
+	\item BGP works on TCP port 179.
+	\item Exchanges Network Layer Reachability Information (NLRI)
+\end{enumerate}
+
+
+\subsection{Routing Policies: Customers, Peers and Providers}
+
+
+\begin{description}
+	\item[Customers] Highest preference.
+	\item[Peers] Next highest preference. If peers are similar, usually money transactions are neglected.
+	\item[Providers] Lowest preference. 
+\end{description}
+
+\begin{description}
+	\item[Advertising Customers] All routes are advertised to customers, and routes to customers are advertised to other Peers and Providers.
+	\item[Advertising Peers and Providers] Peer and Provider routes are not advertised to other Peers or Providers.
+\end{description}
+
+
+\subsection{External BGP (EBGP) and Internal BGP (IBGP}
+
+\begin{description}
+	\item[EBGP (between ASs)] Exchange prefixes and implementing policies.
+	\item[IBGP (within one AS)] Create a consistent view of all entry/exit points. IBGP routes are not distributed to other IBGPs to prevent loops. 
+\end{description}
+
+
+\subsection{BGP Information Bases}
+
+
+\begin{description}
+	\item[Adj-RIB-In] One per peer. Routes after input filtering.
+	\item[Loc-RIB] Only one globally. Routes after best path selection.
+	\item[Adj-RIB-Out] One per peer. Routes after output filtering.
+\end{description}
+
+
+\subsection{BGP Attributes}
+
+In order of path selection preference:
+
+\begin{description}
+	\item[LOCAL-PREF] Advertised within a local AS. Used for local policies. Default value is 100, highest value wins.
+	\item[AS-PATH] Sequence of ASs. Can be used for loop detection, and the sequence length measures the metric. Own AS can be prepended multiple times in EBGP for traffic engineering. This does not consider path length inside a certain AS.
+	\item[ORIGIN] States where the route did origin (NLRI)
+	\item[MULTI-EXIT-DISC] Advertised between neighbour ASs via EBGP, and not transferred to third ASs. Lower MED wins.
+\end{description}
+
+\centerline{\includegraphics[scale=0.5]{images/AS_PATH.png}\\[1cm]}
 
 
 
+Unrelated to path selection:
 
+\begin{description}
+	\item[NEXT-HOP] Must be reachable unless in case of multi-hop BGP.
+\end{description}
+
+
+
+\centerline{\includegraphics[scale=0.5]{images/AS_PATH.png}\\[1cm]}
+	
+	
+
+\subsection{BGP Messages (not packets!)}	
+
+
+\begin{description}
+	\item[OPEN] Establish a peering session. Includes information such as BGP version, AS number, and IP address.
+	\item[UPDATE] Announcing new information: new rules and deleted rules.
+	\item[NOTIFICATION] Error notification.
+	\item[KEEP-ALIVE] Blank packet at regular intervals.
+	\item[REFRESH] Ask peer for a refresh of its information.
+\end{description}
+
+
+\subsection{Traffic Engineering}	
+
+\begin{description}
+	\item[Outbound Traffic] AS is in charge of this engineering. Attributes can be tweaked to select most suitable routes. Usually done by changing local preference.
+	\item[Inbound Traffic] AS depends on other's ASs policies for this. Attributes can be tweaked to attempt to influence other peer's decisions. Can be done (kinda of a "hack") by extending outbound AS-PATH or by manipulating the MED\footnote{\url{http://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/112965-bgpmed-attr-00.html}}. However best approach is to contact other ASs administrators and reach an agreement (use of "communities" for automation).
+\end{description}
+
+
+
+\subsection{IBGP Scaling}	
+
+\begin{description}
+	\item[Route Reflectors] A big IBGP peer, using full-mesh connectivity.
+	\item[Confederations] Use subASs inside your AS, hiding their existence to the outside world.
+\end{description}
 	
 \newpage
 
