@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.1.6)  17 MAR 2015 12:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex 2015.1.6)  19 MAR 2015 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -365,11 +365,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/uva.png (PNG copy
 )>]
-(./INR.toc)
+(./INR.toc [1])
 \tf@toc=\write4
 \openout4 = `INR.toc'.
 
- [1] <images/OSI-model.png, id=16, 405.515pt x 438.63875pt>
+ [2] <images/OSI-model.png, id=19, 405.515pt x 438.63875pt>
 File: images/OSI-model.png Graphic file (type png)
 
 <use images/OSI-model.png>
@@ -391,7 +391,7 @@ Overfull \hbox (2.69504pt too wide) in paragraph at lines 70--71
 reated equally.
  []
 
-[2 <./images/OSI-model.png>]
+[3 <./images/OSI-model.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -399,8 +399,8 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
- [3]
-<images/IP-Header.png, id=30, 578.16pt x 416.2752pt>
+ [4]
+<images/IP-Header.png, id=33, 578.16pt x 416.2752pt>
 File: images/IP-Header.png Graphic file (type png)
 
 <use images/IP-Header.png>
@@ -411,64 +411,112 @@ Overfull \hbox (59.70924pt too wide) in paragraph at lines 119--119
  [] 
  []
 
-[4 <./images/IP-Header.png>]
+[5 <./images/IP-Header.png>]
 Overfull \hbox (3.60962pt too wide) in paragraph at lines 130--130
 []\OT1/cmr/bx/n/14.4 CLEAN: Cal-cu-lat-ing, Legacy, En-di-an-ness, Ad-
  []
 
-<images/BI-LI.png, id=34, 567.11874pt x 276.03125pt>
+<images/BI-LI.png, id=37, 567.11874pt x 276.03125pt>
 File: images/BI-LI.png Graphic file (type png)
  <use images/BI-LI.png>
 Package pdftex.def Info: images/BI-LI.png used on input line 170.
 (pdftex.def)             Requested size: 283.55867pt x 138.01527pt.
 
-[5 <./images/BI-LI.png>]
+[6 <./images/BI-LI.png>]
 Overfull \hbox (44.24687pt too wide) in paragraph at lines 208--209
 []$\OT1/cmtt/m/n/10 http : / / www . iana . nl / assignments / ipv6-[]address-[
 ]space / ipv6-[]address-[]space .
  []
 
-[6] <images/IPv6-Header.png, id=44, 1053.9375pt x 803.0pt>
+[7] <images/IPv6-Header.png, id=47, 1053.9375pt x 803.0pt>
 File: images/IPv6-Header.png Graphic file (type png)
 
 <use images/IPv6-Header.png>
 Package pdftex.def Info: images/IPv6-Header.png used on input line 267.
 (pdftex.def)             Requested size: 474.2675pt x 361.34666pt.
- [7 <./images/IPv6-Header.png>]
-<images/Ethernet.png, id=48, 477.785pt x 117.43875pt>
+ [8 <./images/IPv6-Header.png>]
+<images/Ethernet.png, id=51, 477.785pt x 117.43875pt>
 File: images/Ethernet.png Graphic file (type png)
 
 <use images/Ethernet.png>
 Package pdftex.def Info: images/Ethernet.png used on input line 300.
 (pdftex.def)             Requested size: 334.44722pt x 82.20654pt.
- [8 <./images/Ethernet.png>]
+ [9 <./images/Ethernet.png>]
 Overfull \hbox (2.17412pt too wide) in paragraph at lines 315--316
 []\OT1/cmr/m/n/10 Same as be-fore but chang-
  []
 
-<images/VLAN.png, id=53, 824.07875pt x 394.47375pt>
+<images/VLAN.png, id=56, 824.07875pt x 394.47375pt>
 File: images/VLAN.png Graphic file (type png)
  <use images/VLAN.png>
 Package pdftex.def Info: images/VLAN.png used on input line 354.
 (pdftex.def)             Requested size: 412.03836pt x 197.23639pt.
 
-[9] [10 <./images/VLAN.png>]
-<images/STP-convergence.png, id=61, 389.455pt x 496.85625pt>
+[10] [11 <./images/VLAN.png>]
+<images/STP-convergence.png, id=64, 389.455pt x 496.85625pt>
 File: images/STP-convergence.png Graphic file (type png)
 
 <use images/STP-convergence.png>
 Package pdftex.def Info: images/STP-convergence.png used on input line 403.
 (pdftex.def)             Requested size: 194.72702pt x 248.4275pt.
- [11 <./images/STP-convergence.png (PNG copy)>] <images/BPDU.png, id=65, 705.63
+ [12 <./images/STP-convergence.png (PNG copy)>] <images/BPDU.png, id=69, 705.63
 625pt x 378.41376pt>
 File: images/BPDU.png Graphic file (type png)
  <use images/BPDU.png>
 Package pdftex.def Info: images/BPDU.png used on input line 433.
-(pdftex.def)             Requested size: 493.942pt x 264.88782pt.
+(pdftex.def)             Requested size: 352.81726pt x 189.2064pt.
 
-[12] [13 <./images/BPDU.png>]
+[13 <./images/BPDU.png>] [14]
+Overfull \hbox (5.41731pt too wide) in paragraph at lines 488--489
+\OT1/cmr/m/n/10 us-ing an Ex-ter-nal Gate-way Pro-to-col such as BGP4 (which ho
+lds a monopoly
+ []
 
-LaTeX Warning: Empty bibliography on input line 459.
+[15] <images/bellman_ford.png, id=79, 566.115pt x 433.62pt>
+File: images/bellman_ford.png Graphic file (type png)
+
+<use images/bellman_ford.png>
+Package pdftex.def Info: images/bellman_ford.png used on input line 522.
+(pdftex.def)             Requested size: 339.67162pt x 260.17401pt.
+
+<images/dijkstra.png, id=80, 572.1375pt x 435.6275pt>
+File: images/dijkstra.png Graphic file (type png)
+
+<use images/dijkstra.png>
+Package pdftex.def Info: images/dijkstra.png used on input line 529.
+(pdftex.def)             Requested size: 343.28514pt x 261.37851pt.
+ [16 <./images/bellman_ford.png>] [17 <./images/dijkstra.png>]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Overfull \hbox (10.60432pt too wide) in paragraph at lines 580--582
+[]\OT1/cmr/m/n/10 Prevent in-cor-po-rat-ing pos-si-bly bad rout-ing in-for-ma-t
+ion which
+ []
+
+<images/RIPv1.png, id=90, 459.7175pt x 162.6075pt>
+File: images/RIPv1.png Graphic file (type png)
+ <use images/RIPv1.png>
+Package pdftex.def Info: images/RIPv1.png used on input line 586.
+(pdftex.def)             Requested size: 275.83263pt x 97.56525pt.
+
+[18 <./images/RIPv1.png>] <images/RIPv2.png, id=95, 608.2725pt x 220.825pt>
+File: images/RIPv2.png Graphic file (type png)
+
+<use images/RIPv2.png>
+Package pdftex.def Info: images/RIPv2.png used on input line 623.
+(pdftex.def)             Requested size: 304.13551pt x 110.41222pt.
+ <images/RIPng.png, id=96, 615.29875pt x 213.79875pt>
+File: images/RIPng.png Graphic file (type png)
+
+<use images/RIPng.png>
+Package pdftex.def Info: images/RIPng.png used on input line 637.
+(pdftex.def)             Requested size: 307.64862pt x 106.89911pt.
+ [19 <./images/RIPv2.png>] [20 <./images/RIPng.png>]
+[21] [22]
+
+LaTeX Warning: Empty bibliography on input line 684.
 
 (./INR.aux)
 Package logreq Info: Writing requests to 'INR.run.xml'.
@@ -476,10 +524,10 @@ Package logreq Info: Writing requests to 'INR.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 6408 strings out of 494978
- 105061 string characters out of 6180204
+ 6433 strings out of 494978
+ 105571 string characters out of 6180204
  264142 words of memory out of 5000000
- 9564 multiletter control sequences out of 15000+600000
+ 9584 multiletter control sequences out of 15000+600000
  8566 words of font info for 31 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,8n,33p,793b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -487,18 +535,18 @@ Here is how much of TeX's memory you used:
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.p
-fb>
-Output written on INR.pdf (14 pages, 1130366 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on INR.pdf (23 pages, 1215683 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

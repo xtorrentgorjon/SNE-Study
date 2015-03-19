@@ -450,11 +450,102 @@ TO-DO
 \subsection{STP Enhancements}
 
 \begin{description}
-   	\item[RST] 
-   	\item[STP on VLANs]
-   	\item[MSTP]
+   	\item[Rapid Spanning Tree (RST)] Changes on the BPDUs to make the algorithm faster.
+   	\item[STP on VLANs] Global STP for all VLANs. Individual STP on each one of them.
+   	\item[MSTP] Divide LAN into regions. Run STP on each one of them.
 \end{description}
 
+
+
+
+\newpage
+
+\section{Routing}
+
+\subsection{Basics}
+
+\begin{description}
+   	\item[Direct Routing] Added automatically by $ifconfig$ on unix systems.
+   	\item[Global Routing] Done by using routing tables.
+   	\item[Netstat/Route flags] Flags of the route command:
+   	\begin{description}
+   		\item[G] Needs gateway / directly connected.
+   		\item[H] Route to Host / Route to Network
+   		\item[S] Static route (manually added) / Dynamic route (added by a protocol)
+	\end{description}
+   	\item[ARP] Address Resolution Protocol.
+   	\item[IP] Replacess $ifconfig$, $route$ and $arp$.
+   	\item[Route Selection] Most specific entry on the routing table first. Use default if there is no match.
+\end{description}
+
+
+
+
+\subsection{Internet Routing}
+
+\begin{description}
+   	\item[Autonomous Systems (AS)] An AS is a connected group of one or more IP prefixes that has a single and well-defined routing policy. Each AS is managed by one or more operators and hosts a collection of routers and networks.
+   	\item[Edge Routers] Edge Routers are used to communicate between different ASs, using an External Gateway Protocol such as BGP4 (which holds a monopoly in these type of communications).
+   	\item[Internal Routers] Internal Routers use a different set of Internal Gateway Protocols (IGP) to communicate between themselves, such as RIP, OSPF or IS-IS.
+\end{description}
+
+
+\subsection{Dynamic Routing Mechanisms}
+
+\begin{description}
+   	\item[Distance Vector Routing (RIP)] Bellman-Ford.
+   	\item[Link State Routing (OSPF)] Dijkstra
+   	\item[Path Vector Routing (BGP)] 
+\end{description}
+
+
+
+
+\newpage
+
+\section{Algorithms}
+
+
+
+\subsection{Counting to Infinity Remarks}
+
+\begin{enumerate}
+   	\item In Computer Science, infinite is finite.
+   	\item To avoid issues, do not advertise back to the advertiser (Split Horizon).
+   	\item Poisoned Reverse: Announce back infinite cost to advertiser.
+\end{enumerate}
+
+
+
+\subsection{Bellman-Ford}
+
+\centerline{\includegraphics[scale=0.6]{images/bellman_ford.png}\\[1cm]}
+
+
+
+\subsection{Shortest Path Tree (Dijkstra)}
+
+
+\centerline{\includegraphics[scale=0.6]{images/dijkstra.png}\\[1cm]}
+
+
+
+\subsection{Minimum Spanning Tree (Prim, Kruskal)}
+
+\begin{description}
+   	\item[Prim] Algorithm\footnote{\url{https://www.youtube.com/watch?v=cplfcGZmX7I}}:
+   	\begin{enumerate}
+   		\item Pick random node $N$ and add it to the tree $T$.
+   		\item From all the vertex on the current tree $T$, pick $V_{i}$ with the lowest cost. Add the connected node to the tree.
+   		\item Repeat 2 until all nodes are present on the tree.
+	\end{enumerate}
+   	\item[Kruskal] Algorithm\footnote{\url{https://www.youtube.com/watch?v=71UQH7Pr9kU}}:
+   	\begin{enumerate}
+   		\item Pick the lowest vertex on the graph and create a tree with the two nodes connected.
+   		\item From the rest of the graph, pick the vertex with the lowest value that does not generate a loop. This will create new trees or expand the current ones.
+   		\item Repeat 2 until all nodes are present on a single.
+	\end{enumerate}
+\end{description}
 
 
 
@@ -463,8 +554,131 @@ TO-DO
 
 
 
+\section{RIP}
 
 
+
+\subsection{RIP Version 1}
+
+\subsubsection{Basics}
+
+\begin{enumerate}
+	\item Keep a table of the routes to destinations as {distance (metric), gateway (next hop)}.
+	\item Periodically send table to neighbours.
+	\item Update table with incoming information (regularly can only get better, unless TC announced by root).
+	\item Sent updates as soon as a route changes (later addition).
+	\item Supports one level depth subnet masks. It differentiates updates from the same and another. networks.
+	\item Infinity = 16 hops.
+\end{enumerate}
+	
+\subsubsection{Timers}
+	
+\begin{description}
+	\item[Update timer] updates are sent every 30 seconds.
+	\item[Invalid/Timeout timer] routes time out after 180 seconds.
+	\item[Flush timer] routes disappear after 240 seconds.
+	\item[Hold-down timer] Prevent incorporating possibly bad routing information
+which might be present in a network that didn’t converge yet (180 seconds).
+\end{description}
+
+\subsubsection{Packet Format}
+
+\centerline{\includegraphics[scale=0.6]{images/RIPv1.png}\\[1cm]}
+
+\begin{enumerate}
+	\item Requests broadcasted to $255.255.255.255$ or to a directed broadcast address. Answers as unicast.
+	\item Uses UPD port 520.
+	\item UDP packet 512 bytes - 8 bytes UDP header: 504 bytes. 20 bytes/route = max 25 route updates/packet.
+\end{enumerate}
+
+
+\subsection{Protocol Extensions}
+
+
+\subsubsection{Interior Gateway Routing Protocol (IGRP)}
+
+\begin{enumerate}
+	\item Runs directly on top of IP (protocol 9).
+	\item Larger notion of infinity (100-255).
+	\item Can handle up to four parallel paths.
+	\item Uses three types of network routes.
+	\item Metric includes, besides hop count, other information {delay, bandwidth, reliability and load}.
+\end{enumerate}
+
+
+
+
+
+\subsubsection{Enhanced Interior Gateway Routing Protocol (EIGRP)}
+
+\begin{enumerate}
+	\item Runs directly on top of IP (protocol 88).
+	\item Keeps state of neighbours.
+	\item Remembers $all$ paths.
+\end{enumerate}
+
+\subsection{RIP Version 2}
+
+
+\centerline{\includegraphics[scale=0.5]{images/RIPv2.png}\\[1cm]}
+
+\begin{description}
+	\item[Route Tag] Identification of route origin. Differentiates internally and externally generated routes. Can be used for authentication.
+	\item[IP Address] Destination Network. RIPv2 uses multicast group 224.0.0.9, not broadcast.
+	\item[Subnet Mask] CIDR support.
+	\item[Next Hop] Gateway (if different from advertising router).
+\end{description}
+
+
+
+\subsection{RIPng}
+
+
+\centerline{\includegraphics[scale=0.5]{images/RIPng.png}\\[1cm]}
+
+
+\begin{enumerate}
+	\item Runs on UPD (Port 521).
+	\item Packets can be as large as MTU.
+	\item Used in IPv6. Multicast address FF02::9.
+\end{enumerate}
+
+
+
+
+
+
+
+
+\newpage
+
+\section{OSPF}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{BGP}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
 
 
 \printbibliography
