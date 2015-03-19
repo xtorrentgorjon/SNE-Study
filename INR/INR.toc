@@ -92,7 +92,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.4}Minimum Spanning Tree (Prim, Kruskal)}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}RIP}{18}
+\contentsline {section}{\numberline {8}Distance Vector Protocol- RIP}{18}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {8.1}RIP Version 1}{18}
 \defcounter {refsection}{0}\relax 
@@ -112,6 +112,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {8.4}RIPng}{20}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}OSPF}{21}
+\contentsline {section}{\numberline {9}Link State Routing - OSPF}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}BGP}{22}
+\contentsline {subsection}{\numberline {9.1}Basics}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2}Link State Packets}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.3}Non-broadcast Networks}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.4}LSP Generation}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.5}LSP Problems}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.6}OSPF Properties}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.7}Parameters and LSAs}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.8}Network representation}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.9}Router Types}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.10}Stubby Areas}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.11}OSPF Packet Format}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Path Vector Routing - BGP}{24}

@@ -22,16 +22,18 @@
 
 \textsc{\Large InterNetworking and Routing}\\[0.5cm]
 
+\textsc{\Large For Dummies}\\[0.5cm]
+
 \includegraphics[scale=1]{images/uva.png}\\[3cm]
 
 
 \begin{minipage}{0.4 \textwidth}
 \begin{center}
-Xavier Torrent Gorj\'{o}n \\
+Xavier Torrent Gorj\'{o}n \\[0.5cm]
 \emph{Xavier.TorrentGorjon@os3.nl}\\[0.5cm]
 \end{center}
 \end{minipage}
-\hfill
+\hfill\\[0.5cm]
 
 {\large \today} 
 
@@ -554,7 +556,7 @@ TO-DO
 
 
 
-\section{RIP}
+\section{Distance Vector Protocol- RIP}
 
 
 
@@ -563,6 +565,7 @@ TO-DO
 \subsubsection{Basics}
 
 \begin{enumerate}
+	\item Based on the Bellman-Ford algorithm.
 	\item Keep a table of the routes to destinations as {distance (metric), gateway (next hop)}.
 	\item Periodically send table to neighbours.
 	\item Update table with incoming information (regularly can only get better, unless TC announced by root).
@@ -648,36 +651,139 @@ which might be present in a network that didn’t converge yet (180 seconds).
 
 
 
+\newpage
+
+
+
+\section{Link State Routing - OSPF}
+
+
+\subsection{Basics}
+
+
+\begin{enumerate}
+	\item Based on the Dijkstra algorithm.
+	\item Used instead of distance vector algorithms on more complex topologies.
+	\item Faster convergence time than distance vector algorithms.
+\end{enumerate}
+
+
+\subsection{Link State Packets}
+
+\begin{enumerate}
+	\item LSP represent the state of a Router and its links to the rest of the network.
+	\item Enough for point-to-point links.
+	\item Broadcast Networks and NBMA networks are represented by virtual nodes.
+\end{enumerate}
+
+\subsection{Non-broadcast Networks}
+
+\begin{description}
+	\item[NBMA] Non-Broadcast Multiple Access
+	\begin{enumerate}
+		\item Full-mesh connectivity, but not permanently.
+		\item Connectivity by Designated Routers (DR).
+	\end{enumerate}
+	\item[Point-to-multipoint]
+	\begin{enumerate}
+		\item Subset of all point-to-point links.
+		\item No full-mesh.
+		\item No DR elected.
+	\end{enumerate}
+
+\end{description}
+
+
+\subsection{LSP Generation}
+
+\begin{enumerate}
+	\item Announcements every 30 minutes (RIP was 30 seconds)
+	\item Announcements trigger as soon as changes are detected (link up/down, change on link cost).
+	\item Use smart flooding to detect duplicates (propagation looks like a tree).
+\end{enumerate}
+
+
+\subsection{LSP Problems}
+
+\begin{description}
+	\item[LSP arriving out of order] Solutions: Timestamps and Sequence numbers. Timestamps require clock synchronization. Sequence numbers must be large enough to guarantee ordering, and the value should always be increased when forwarding the LSP. 
+\end{description}
+	
+	
+\subsection{OSPF Properties}
+	
+\begin{enumerate}
+	\item Supports hierarchical routing and subnets.
+	\item Efficient multicast for flooding.
+	\item Uses metrics based on cost on each interface.
+	\item Supports virtual links, load balancing, unnumbered interfaces and authentication.
+	\item Built on top of IP (protocol 89).
+	\item LSP are named LSA (Link State Advertisement).
+	\item OSPF uses multicast address 224.0.0.6 (FF02::6) for DR and multicast address 224.0.0.5 (FF02::5) for all routers.
+\end{enumerate}
+
+
+\subsection{Parameters and LSAs}
+	
+\begin{enumerate}
+	\item Timing parameters must be the same for all OSPF neighbours.
+	\item If routing table overflows, external routers are dropped first to generate space.
+	\item LSAs must be acknowledged, and can be queued for transmission. They must time out at about the same time.
+\end{enumerate}
+
+
+
+
+
+\subsection{Network representation}
+	
+\begin{enumerate}
+	\item A DR and a Backup Designated Router (BDR) are elected on each multi-access network with Hello packets. The (B)DR represents the network as a virtual node and acts on its behalf. Routers can have custom priorities for the election.
+	\item Hierarchical Routing:
+\end{enumerate}
+
+
+\centerline{\includegraphics[scale=0.5]{images/OSPF.png}\\[1cm]}
+
+
+\subsection{Router Types}
+	
+\begin{description}
+	\item[Backbone Router] At least one interface is inside in the Backbone (Area 0).
+	\item[Internal Router] All interfaces are in the same Area.
+	\item[Area Border Router (ABR)] Has one interface in the Backbone and one or more in other areas.
+	\item[Autonomous System Boundary Router (ASBR)] Participates in external routing protocols.
+\end{description}
+
+
+
+\subsection{Stubby Areas}
+	
+\begin{description}
+	\item[Stubby Area] Area in which no external routing information is injected by the ABRs.
+	\item[Totally Stubby Area] Stubby Area in which not even inter-area summaries are injected.
+	\item[Not-So-Stubby Area]  Stubby Area in which external routing information can be generated and propagated locally.
+\end{description}
+
+
+
+\subsection{OSPF Packet Format}
+	
+
+
+
+
 
 
 \newpage
 
-\section{OSPF}
+\section{Path Vector Routing - BGP}
 
 
 
 
 
-
-
-
-
-
-
-\newpage
-
-\section{BGP}
-
-
-
-
-
-
-
-
-
-
-
+	
 \newpage
 
 
